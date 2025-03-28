@@ -9,6 +9,7 @@ Plataforma de Gerenciamento de Projetos Arquitetônicos
  - [Eros Secundus Canto](https://github.com/erossecundus)
  - [Luciana Tiemi Shimoyama](https://github.com/lucitiemi)
  - [Clara Ricioni](https://github.com/clararicioni)
+ - [Alícia Munhóz](https://github.com/aliciamunhoz)
 
 
 ## Tema
