@@ -4,21 +4,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FooterComponent } from './layout/footer/footer.component';
-import { LoginComponent } from './auth/login/login.component';
-import { NavbarComponent } from './layout/navbar/navbar.component';
+
+import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
+import { LayoutModule } from './layout/layout.module';
+import { MaintenanceModule } from './maintenance/maintenance.module';
+import { SharedModule } from './shared/shared.module';
+import { PublicModule } from './public/public.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    LoginComponent,
-    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AuthModule,
+    CoreModule,
+    HomeModule,
+    LayoutModule,
+    MaintenanceModule,
+    SharedModule,
+    PublicModule
   ],
   providers: [],
   bootstrap: [AppComponent]
