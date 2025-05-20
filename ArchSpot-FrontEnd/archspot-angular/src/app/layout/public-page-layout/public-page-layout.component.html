@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="offset-1 col-10">
+
+      <!-- Cabeçalho de Título -->
+      <div class="row p-4">
+        <h1 class="fw-light fs-1 font-logo">{{ title }}</h1>
+        <hr>
+        <p class="fs-4">{{ subtitle }}</p>
+      </div>
+
+      <!-- Conteúdo-->
+      <ng-content></ng-content>
+      <!-- O conteúdo da página que usa o template será renderizado aqui! -->
+    </div>
+  </div>
+</div>

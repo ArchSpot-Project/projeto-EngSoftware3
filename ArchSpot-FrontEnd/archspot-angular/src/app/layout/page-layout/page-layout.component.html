@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="offset-1 col-10">
+
+      <!-- Cabeçalho de Título -->
+      <div class="row">
+        <h1 class="fw-light fs-1 font-logo">{{ title }}</h1>
+        <hr>
+      </div>
+
+      <div class="row gx-3 mb-5">
+
+        <!-- Coluna de Menu Sidebar-->
+        <div class="col-3">
+          <app-sidebar-menu></app-sidebar-menu>
+        </div>
+
+        <!-- Coluna de Conteúdo-->
+        <div class="col-9">
+          <div class="bg-white rounded-2 p-4">
+            <ng-content></ng-content>
+            <!-- O conteúdo da página qeu usa o template será renderizado aqui! -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
