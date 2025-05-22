@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PublicRoutingModule } from './public-routing.module';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { PlansPageComponent } from './pages/plans-page/plans-page.component';
+import { LayoutModule } from '../layout/layout.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PlansPageComponent } from './pages/plans-page/plans-page.component';
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    LayoutModule
   ]
 })
 export class PublicModule { }
