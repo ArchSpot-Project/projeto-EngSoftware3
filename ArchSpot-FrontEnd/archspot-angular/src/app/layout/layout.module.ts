@@ -27,7 +27,8 @@ import { PublicPageLayoutComponent } from './public-page-layout/public-page-layo
     NavbarComponent,
     FooterComponent,
     SidebarMenuComponent,
-    PageLayoutComponent
+    PageLayoutComponent,
+    PublicPageLayoutComponent
   ]
 })
 export class LayoutModule { }
