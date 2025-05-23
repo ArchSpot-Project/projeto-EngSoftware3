@@ -8,4 +8,24 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  /*
+  TODO: Injetar serviço para chamar no template (quando implementar a autenticação)
+  constructor(public authService: AuthService) {}
+
+  get user() {
+    return this.authService.getUser();
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+  */
+
+  // Temporário para validar funcionamento
+  isLoggedIn() {
+    return true;
+  }
+  user = {
+    "name" : "Ana"
+  }
 }
