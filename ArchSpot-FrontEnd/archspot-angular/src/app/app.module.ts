@@ -12,6 +12,7 @@ import { LayoutModule } from './layout/layout.module';
 import { MaintenanceModule } from './maintenance/maintenance.module';
 import { SharedModule } from './shared/shared.module';
 import { PublicModule } from './public/public.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PublicModule } from './public/public.module';
     LayoutModule,
     MaintenanceModule,
     SharedModule,
-    PublicModule
+    PublicModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
