@@ -22,22 +22,30 @@
 
         <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4 pb-3">
           <div class="col col-xl-4">
-            <form>
+
+            <form (ngSubmit)="login()">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">E-mail:</label>
-                <input type="email" class="form-control shadow-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="inputEmail" class="form-label">E-mail:</label>
+                <input type="email" [(ngModel)]="email" name="email" class="form-control shadow-sm" id="inputEmail"
+                  aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Senha:</label>
-                <input type="password" class="form-control shadow-sm" id="exampleInputPassword1">
+                <label for="inputPassword" class="form-label">Senha:</label>
+                <input type="password" [(ngModel)]="password" name="password" class="form-control shadow-sm"
+                  id="inputPassword">
                 <div id="emailHelp" class="form-text">Esqueceu seu senha?</div>
               </div>
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Mantenha-me logado</label>
               </div>
-              <a href="" class="btn btn-success shadow">Entrar</a>
+              <button type="submit" class="btn btn-success shadow">Entrar</button>
+
+              <div *ngIf="error" class="text-danger mt-2">
+                E-mail ou senha inválidos.
+              </div>
             </form>
+            
             <div class="row d-flex justify-content-between mt-5">
               <div class="col fs-5 fw-medium mb-2">Não tem conta? Cadastre-se!</div>
             </div>
