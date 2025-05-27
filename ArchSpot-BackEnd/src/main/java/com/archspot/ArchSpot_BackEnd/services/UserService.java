@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.archspot.ArchSpot_BackEnd.dtos.LoginRequestDTO;
 import com.archspot.ArchSpot_BackEnd.dtos.UserCreateDTO;
+import com.archspot.ArchSpot_BackEnd.dtos.UserDTO;
 import com.archspot.ArchSpot_BackEnd.dtos.UserUpdateDTO;
 import com.archspot.ArchSpot_BackEnd.entities.User;
 import com.archspot.ArchSpot_BackEnd.repositories.UserRepository;
@@ -76,5 +78,14 @@ public class UserService {
 
 	}
 
+		/*
+	 		Autentica o usuário pelas credenciais.
+	 		@return Optional.empty() se inválido, ou UserDTO se válido.
+	 	*/
+    public Optional<UserDTO> authenticate(LoginRequestDTO creds) {
+        return repository
+            .findByEmailAndPassword(creds.email(), creds.password())
+            .map(u -> new UserDTO(u.getId(), u.getName(), u.getEmail(), u.getUserRole()));
+    }
 
 }
