@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #78A58B;">
   <div class="container-fluid">
 
-    <a class="navbar-brand" routerLink="/">
+    <a class="navbar-brand" role="button" (click)="goToHome()">
       <img src="assets/img/icon.jpg" alt="" class="rounded-circle me-2 d-inline-block align-text-middle" width="30"
         height="30">
       <span class="font-logo">ArchSpot</span>
@@ -16,11 +16,11 @@
     <div *ngIf="isLoggedIn()" class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="home">Home</a>
+          <a class="nav-link" aria-current="page" role="button" (click)="goToHome()">Home</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="login">Projetos</a>
+          <a class="nav-link" aria-current="page" role="button" (click)="goToProjects()">Projetos</a>
         </li>
 
         <!-- Dropdown Cadastros -->
@@ -35,9 +35,9 @@
         </li>
       </ul>
 
-      <a role="button" class="fs-5 link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+      <a (click)="goToUserAccount()" role="button" class="fs-5 link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
         <span class="me-2">{{ user?.name }}</span>
-        <img src="assets/img/personas/ana.jpeg" class="rounded-circle ms-2" width="35" height="35">
+        <img [src]="userImage" class="rounded-circle ms-2" width="35" height="35">
       </a>
     </div>
 
@@ -47,31 +47,28 @@
 
         <!-- Dropdown Planos -->
         <li class="nav-item dropdown" ngbDropdown>
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle routerLink="plans">
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle role="button">
             Planos
           </a>
           <ul ngbDropdownMenu class="dropdown-menu">
-            <!-- TODO: DEFINIR AS ROTAS DOS PLANOS UM DIA -->
-            <li><a class="dropdown-item" routerLink="plans">Plano Livre</a></li>
-            <li><a class="dropdown-item" routerLink="plans">Plano Autônomo</a></li>
-            <li><a class="dropdown-item" routerLink="plans">Plano Empresa</a></li>
+            <li><a class="dropdown-item" role="button" (click)="goToPlans(1)">Plano Livre</a></li>
+            <li><a class="dropdown-item" role="button" (click)="goToPlans(2)">Plano Autônomo</a></li>
+            <li><a class="dropdown-item" role="button" (click)="goToPlans(3)">Plano Empresa</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" routerLink="plans">Conheça mais...</a></li>
+            <li><a class="dropdown-item" role="button" (click)="goToPlans()">Conheça mais...</a></li>
           </ul>
         </li>
       </ul>
 
-      <a routerLink="maintenance"
+      <a role="button" (click)="goToCreateAccount()"
         class="fs-5 link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-2"
         role="button">
         Cadastre-se
       </a>
 
-      <!-- TODO: STYLE DO BOTÃO ENTRAR INLINE -> REVER PARA ARQIVO CSS EXTERNO-->
-      <a routerLink="login" class="btn fw-medium ms-3 me-2 px-3 border-2"
-        style="background-color: #FBECDA; border-color: #19535F; color: #19535F">
+      <a role="button" (click)="goToLogin()" class="btn btn-login fw-medium ms-3 me-2 px-3 border-2">
         Entre
       </a>
     </div>
