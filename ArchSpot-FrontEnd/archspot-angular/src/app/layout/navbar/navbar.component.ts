@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,49 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class NavbarComponent {
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) { }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+  
+  goToPlans(planType?: number) {
+    // TODO: Rotas de Tipos de Planos genérico, implementar um dia...
+    if (planType !== undefined) {
+      this.router.navigate(['/plans', planType]);
+    } else {
+      this.router.navigate(['/plans']);
+    }
+  }
+
+  goToHome() {
+    if(this.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/']);
+    }
+    
+  }
+
+  goToProjects() {
+    this.router.navigate(['/projects']);
+  }
+
+  goToCreateAccount() {
+    this.router.navigate(['/create-account']);
+  }
+
+  goToUserAccount() {
+    this.router.navigate(['/user-account']);
+  }
 
   get user() {
     return this.authService.getUser();
+  }
+
+  // TODO: No futuro esse método deve carregar a foto vinda do BD
+  get userImage(): string {
+    return `/assets/img/personas/${this.user?.name.toLowerCase().replaceAll(' ', '-')}.jpeg`;
   }
 
   isLoggedIn() {
