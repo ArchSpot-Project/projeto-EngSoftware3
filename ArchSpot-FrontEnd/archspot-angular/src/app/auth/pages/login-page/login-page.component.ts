@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { UserCredentials } from '../../../core/models/user.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalCadastroComponent } from '../../../shared/modal-cadastro/modal-cadastro.component';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +15,7 @@ export class LoginPageComponent {
   password: string = '';
   error: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private modalService: NgbModal) {}
 
   login() {
     const credentials: UserCredentials = {
@@ -28,5 +30,9 @@ export class LoginPageComponent {
       },
       error: () => this.error = true
     });
+  }
+
+  openRegisterModal() {
+    this.modalService.open(ModalCadastroComponent , { size: 'lg' });
   }
 }
