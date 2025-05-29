@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-layout',
@@ -7,4 +9,16 @@ import { Component, Input } from '@angular/core';
 })
 export class PageLayoutComponent {
   @Input() title: string = '';
+  @Input() showSidebar: boolean = true; // padrão: mostrar sidebar
+  @Input() showBackButton: boolean = false; // padrão: omitir icone voltar
+
+  constructor(private location: Location, private router: Router) { }
+
+  goBack(): void {
+    if (window.history.length > 1) { // Se existir histórico...
+      this.location.back(); // ...volta para a rota anterior
+    } else {
+      this.router.navigate(['/home']); // Senão fallback padrão
+    }
+  }
 }

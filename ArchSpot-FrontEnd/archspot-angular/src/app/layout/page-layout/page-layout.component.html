@@ -4,26 +4,29 @@
 
       <!-- Cabeçalho de Título -->
       <div class="row">
-        <h1 class="fw-light fs-1 font-logo">{{ title }}</h1>
+        <h1 class="fw-light fs-1 font-logo d-flex align-items-center">
+          <a *ngIf="showBackButton" (click)="goBack()" class="btn p-1">
+            <img src="/assets/img/icons/chevron-double-left.svg" alt="" width="30" height="30">
+          </a>
+          {{ title }}
+        </h1>
         <hr>
       </div>
 
       <div class="row gx-3 mb-5">
 
-        <!-- Coluna de Menu Sidebar-->
-        <div class="col-3">
+        <!-- condiciona exibição ou não do sidebar -->
+        <div class="col-3" *ngIf="showSidebar;">
           <app-sidebar-menu></app-sidebar-menu>
         </div>
 
-        <!-- Coluna de Conteúdo-->
-        <div class="col-9">
+        <!-- Condiciona o tamanho da coluna de conteúdo conforme exibe ou não -->
+        <div [class.col-9]="showSidebar" [class.col]="!showSidebar">
           <div class="bg-white rounded-2 p-4">
             <ng-content></ng-content>
-            <!-- O conteúdo da página qeu usa o template será renderizado aqui! -->
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
-</div>
