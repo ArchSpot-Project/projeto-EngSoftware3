@@ -7,6 +7,7 @@ import { RouterLinkActive, RouterModule } from '@angular/router';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 import { PageLayoutComponent } from './page-layout/page-layout.component';
 import { PublicPageLayoutComponent } from './public-page-layout/public-page-layout.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -21,7 +22,8 @@ import { PublicPageLayoutComponent } from './public-page-layout/public-page-layo
   imports: [
     CommonModule,
     NgbDropdownModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     NavbarComponent,

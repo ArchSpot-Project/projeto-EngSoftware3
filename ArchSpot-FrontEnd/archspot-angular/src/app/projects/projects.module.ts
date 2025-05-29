@@ -10,12 +10,14 @@ import { LayoutModule } from "../layout/layout.module";
 @NgModule({
   declarations: [
     ProjectsPageComponent,
-    ProjectDetailsPageComponent
+    ProjectDetailsPageComponent,
   ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,
     LayoutModule
-]
+],
+  exports: [
+  ]
 })
 export class ProjectsModule { }

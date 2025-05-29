@@ -20,12 +20,19 @@
           <app-sidebar-menu></app-sidebar-menu>
         </div>
 
-        <!-- Condiciona o tamanho da coluna de conteúdo conforme exibe ou não -->
         <div [class.col-9]="showSidebar" [class.col]="!showSidebar">
+
+          <!-- condiciona exibição ou não do cronograma -->
+          <ng-container *ngIf="showStatusBar;">
+            <app-project-status-bar></app-project-status-bar>
+          </ng-container>
+
+          <!-- Condiciona o tamanho da coluna de conteúdo conforme exibe ou não -->
           <div class="bg-white rounded-2 p-4">
             <ng-content></ng-content>
           </div>
         </div>
+
 
       </div>
     </div>

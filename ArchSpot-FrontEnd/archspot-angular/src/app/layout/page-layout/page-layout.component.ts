@@ -12,6 +12,8 @@ export class PageLayoutComponent {
   @Input() showSidebar: boolean = true; // padrão: mostrar sidebar
   @Input() showBackButton: boolean = false; // padrão: omitir icone voltar
 
+  @Input() showStatusBar: boolean = false; // padrão: omitir cronograma
+
   constructor(private location: Location, private router: Router) { }
 
   goBack(): void {
