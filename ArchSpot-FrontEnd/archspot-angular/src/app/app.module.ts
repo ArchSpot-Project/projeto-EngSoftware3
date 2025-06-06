@@ -13,6 +13,7 @@ import { MaintenanceModule } from './maintenance/maintenance.module';
 import { SharedModule } from './shared/shared.module';
 import { PublicModule } from './public/public.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProjectsModule } from './projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaintenanceModule,
     SharedModule,
     PublicModule,
+    ProjectsModule,
     HttpClientModule
   ],
   providers: [],
