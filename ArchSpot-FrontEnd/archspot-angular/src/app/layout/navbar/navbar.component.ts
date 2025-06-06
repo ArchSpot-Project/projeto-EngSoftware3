@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { ModalCadastroComponent } from '../../shared/modal-cadastro/modal-cadastro.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router, private modalService: NgbModal) { }
 
   goToLogin() {
     this.router.navigate(['/login']);
@@ -38,8 +40,8 @@ export class NavbarComponent {
     this.router.navigate(['/projects']);
   }
 
-  goToCreateAccount() {
-    this.router.navigate(['/create-account']);
+  openRegisterModal() {
+      this.modalService.open(ModalCadastroComponent , { size: 'lg' });
   }
 
   goToUserAccount() {
