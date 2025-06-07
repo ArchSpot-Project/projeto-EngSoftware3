@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModalCadastroComponent } from './modal-cadastro/modal-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { ProjectStatusBarComponent } from './components/project-status-bar/project-status-bar.component';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 
 
@@ -13,10 +14,14 @@ import { ProjectStatusBarComponent } from './components/project-status-bar/proje
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxMaskDirective
   ],
   exports: [
     ProjectStatusBarComponent
+  ],
+  providers: [
+    provideNgxMask()
   ]
 })
 export class SharedModule { }
