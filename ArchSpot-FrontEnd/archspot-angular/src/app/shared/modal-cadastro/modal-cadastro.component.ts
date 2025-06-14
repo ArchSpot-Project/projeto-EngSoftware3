@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../../core/services/user.service';
+import { UserCreateDTO } from '../../core/models/user.model';
 
 @Component({
   selector: 'app-modal-cadastro',
@@ -9,15 +11,25 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class ModalCadastroComponent {
-  cpf: string = '';
-  tel: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  passwordsDoNotMatch: boolean = false;
+  
+  name = '';
+  email = '';
+  cpf = '';
+  phone = '';
+  address = '';
+  profession = '';
+  userRole: 'customer' | 'member' = 'customer';
+  password = '';
+  confirmPassword = '';
+  passwordsDoNotMatch = false;
+
   preview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private userService: UserService
+  ) {}
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -35,12 +47,32 @@ export class ModalCadastroComponent {
 
   onSubmit(form: NgForm) {
     this.passwordsDoNotMatch = this.password !== this.confirmPassword;
-
     if (form.invalid || this.passwordsDoNotMatch) {
       console.log('Formulário inválido.');
       return;
     }
-    console.log('Formulário enviado com sucesso!');
+
+    const newUser: UserCreateDTO = {
+      name: this.name,
+      email: this.email,
+      cpf: this.cpf,
+      phone: this.phone,
+      address: this.address,
+      profession: this.profession,
+      userRole: this.userRole,
+      password: this.password
+    };
+
+    this.userService.createUser(newUser).subscribe({
+      next: (res) => {
+        alert('Usuário cadastrado com sucesso!');
+        this.activeModal.close();
+      },
+      error: (err) => {
+        alert('Erro ao cadastrar usuário.');
+        console.error(err);
+      }
+    });
   }
 }
 

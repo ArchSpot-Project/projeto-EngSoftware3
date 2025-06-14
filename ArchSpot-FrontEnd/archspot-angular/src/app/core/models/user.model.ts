@@ -11,6 +11,17 @@ export interface User {
   profession: string;
 }
 
+export interface UserCreateDTO {
+  cpf: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  userRole: Role;
+  profession: string;
+  password: string;
+}
+
 // Interface opcional só para criação/login (sugestao GPT):
 // TODO: Tirar essa senha daqui logo logo...
 export interface UserCredentials {

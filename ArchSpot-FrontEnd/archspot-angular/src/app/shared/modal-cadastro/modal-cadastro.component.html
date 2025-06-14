@@ -20,32 +20,32 @@
 
         <div class="mb-3">
             <label for="cpf" class="form-label">CPF:</label>
-            <input type="text" mask="000.000.000-00" class="form-control" name="cpf" id="cpf" required />
+            <input type="text" mask="000.000.000-00" class="form-control" name="cpf" id="cpf" [(ngModel)]="cpf" required />
         </div>
 
         <div class="mb-3">
             <label for="name" class="form-label">Nome Completo:</label>
-            <input type="text" class="form-control" name="username" id="name" required />
+            <input type="text" class="form-control" name="username" id="name" [(ngModel)]="name" required />
         </div>
 
         <div class="mb-3">
             <label for="email">E-mail:</label>
-            <input type="email" class="form-control" name="email" id="email" required />
+            <input type="email" class="form-control" name="email" id="email" [(ngModel)]="email" required />
         </div>
 
         <div class="mb-3">
-            <label for="telefone" class="form-label">Telefone:</label>
-            <input type="text" mask="(00) 00000-0000" class="form-control" name="phone" id="phone" required />
+            <label for="phone" class="form-label">Telefone:</label>
+            <input type="text" mask="(00) 00000-0000" class="form-control" name="phone" id="phone" [(ngModel)]="phone" required />
         </div>
 
         <div class="mb-3">
             <label for="endereco" class="form-label">Endereço:</label>
-            <input type="text" class="form-control" name="address" id="address" required />
+            <input type="text" class="form-control" name="address" id="address" [(ngModel)]="address" required />
         </div>
 
         <div class="mb-3">
             <label for="profissao" class="form-label">Profissão:</label>
-            <input type="text" class="form-control" name="profession" id="profession" required />
+            <input type="text" class="form-control" name="profession" id="profession" [(ngModel)]="profession" required />
         </div>
 
         <div class="mb-3">
