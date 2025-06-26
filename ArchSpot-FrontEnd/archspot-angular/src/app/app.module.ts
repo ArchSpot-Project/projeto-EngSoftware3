@@ -14,6 +14,7 @@ import { SharedModule } from './shared/shared.module';
 import { PublicModule } from './public/public.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsModule } from './projects/projects.module';
+import { EventsModule } from './events/events.module';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,19 @@ import { ProjectsModule } from './projects/projects.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+
     AuthModule,
     CoreModule,
     HomeModule,
-    LayoutModule,
     MaintenanceModule,
-    SharedModule,
-    PublicModule,
     ProjectsModule,
+    EventsModule,
+
+    PublicModule,
+    LayoutModule,
+    SharedModule,
+
+
     HttpClientModule
   ],
   providers: [],
