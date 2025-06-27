@@ -21,7 +21,7 @@ export class SidebarMenuComponent {
   goToEvents() {
     this.router.navigate(['/events']);
   }
-  goTorRports() {
+  goTorReports() {
     this.router.navigate(['/reports']);
   }
   

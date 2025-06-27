@@ -15,6 +15,7 @@ import { PublicModule } from './public/public.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsModule } from './projects/projects.module';
 import { EventsModule } from './events/events.module';
+import { ReportsModule } from './reports/reports.module';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,10 @@ import { EventsModule } from './events/events.module';
     AuthModule,
     CoreModule,
     HomeModule,
-    MaintenanceModule,
     ProjectsModule,
     EventsModule,
+    ReportsModule,
+    MaintenanceModule,
 
     PublicModule,
     LayoutModule,

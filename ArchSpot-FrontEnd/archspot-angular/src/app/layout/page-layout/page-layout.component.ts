@@ -14,6 +14,8 @@ export class PageLayoutComponent {
 
   @Input() showStatusBar: boolean = false; // padrão: omitir cronograma
 
+  @Input() fullWidth: boolean = false; // padrão: offset-1 col-10
+
   constructor(private location: Location, private router: Router) { }
 
   goBack(): void {
