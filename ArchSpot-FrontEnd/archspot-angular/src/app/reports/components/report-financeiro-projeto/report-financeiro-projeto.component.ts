@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './report-financeiro-projeto.component.css'
 })
 export class ReportFinanceiroProjetoComponent {
+  isGenerated = false;
 
+  // Campos simulados do formulário — pode ser substituído por model/formGroup depois
+  formData = {
+    projeto: 'selecione'
+  };
+
+  gerarRelatorio(): void {
+    this.isGenerated = true;
+  }
+
+  voltarEdicao(): void {
+    this.isGenerated = false;
+  }
 }
