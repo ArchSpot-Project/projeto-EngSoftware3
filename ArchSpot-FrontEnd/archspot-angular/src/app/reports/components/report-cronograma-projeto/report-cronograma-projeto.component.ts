@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './report-cronograma-projeto.component.css'
 })
 export class ReportCronogramaProjetoComponent {
+  isGenerated = false;
 
+  // Campos simulados do formulário — pode ser substituído por model/formGroup depois
+  formData = {
+    projeto: 'selecione'
+  };
+
+  gerarRelatorio(): void {
+    this.isGenerated = true;
+  }
+
+  voltarEdicao(): void {
+    this.isGenerated = false;
+  }
 }
