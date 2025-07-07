@@ -1,5 +1,14 @@
 package com.archspot.ArchSpot_BackEnd.dtos;
 
-public record UserCreateDTO(String name, String cpf, String email, String password) {
-    
-}
+import com.archspot.ArchSpot_BackEnd.enums.UserRole;
+
+public record UserCreateDTO(
+  String cpf,
+  String name,
+  String phone,
+  String address,
+  String profession,
+  String email,
+  UserRole userRole,
+  String password
+) {}

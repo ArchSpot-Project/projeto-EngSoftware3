@@ -10,7 +10,12 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/users/login';
   private currentUser: User | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    const storedUser = sessionStorage.getItem('currentUser');
+    if (storedUser) {
+      this.currentUser = JSON.parse(storedUser);
+    }
+  }
 
   login(credentials: UserCredentials): Observable<User> {
     return this.http.post<User>(this.apiUrl, credentials);
@@ -18,6 +23,11 @@ export class AuthService {
 
   setCurrentUser(user: User) {
     this.currentUser = user;
+    sessionStorage.setItem('currentUser', JSON.stringify(user)); // salva no sessionStorage por enquanto
+  }
+
+  getUser(): User | null {
+    return this.currentUser;
   }
 
   isLoggedIn(): boolean {
@@ -26,9 +36,6 @@ export class AuthService {
 
   logout() {
     this.currentUser = null;
-  }
-
-  getUser(): User | null {
-    return this.currentUser;
+    sessionStorage.removeItem('currentUser');
   }
 }

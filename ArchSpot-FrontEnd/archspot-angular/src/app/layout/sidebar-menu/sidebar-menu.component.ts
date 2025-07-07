@@ -25,8 +25,8 @@ export class SidebarMenuComponent {
     this.router.navigate(['/reports']);
   }
   
-  goToUserAccount() {
-    this.router.navigate(['/user-account']);
+  goToProfile() {
+    this.router.navigate(['/profile']);
   }
   goToMaintenance() {
     this.router.navigate(['/maintenance']);

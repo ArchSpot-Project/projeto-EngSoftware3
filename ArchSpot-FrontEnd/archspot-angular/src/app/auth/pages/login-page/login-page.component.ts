@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserCredentials } from '../../../core/models/user.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalCadastroComponent } from '../../../shared/modal-cadastro/modal-cadastro.component';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +16,11 @@ export class LoginPageComponent {
   password: string = '';
   error: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router, private modalService: NgbModal) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService, 
+    private router: Router, 
+    private modalService: NgbModal) { }
 
   login() {
     const credentials: UserCredentials = {
@@ -25,14 +30,17 @@ export class LoginPageComponent {
 
     this.authService.login(credentials).subscribe({
       next: user => {
-        this.authService.setCurrentUser(user);
-        this.router.navigate(['/home']);
+        // busca o perfil completo só após o login
+        this.userService.getUserById(user.id).subscribe(fullUser => {
+          this.authService.setCurrentUser(fullUser);
+          this.router.navigate(['/home']);
+        });
       },
       error: () => this.error = true
     });
   }
 
   openRegisterModal() {
-    this.modalService.open(ModalCadastroComponent , { size: 'lg' });
+    this.modalService.open(ModalCadastroComponent, { size: 'lg' });
   }
 }

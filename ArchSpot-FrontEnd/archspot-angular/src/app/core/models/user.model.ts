@@ -1,24 +1,36 @@
-export type Role = 'admin' | 'customer' | 'member';
+export type Role = 'ADMIN' | 'CUSTOMER' | 'MEMBER';
 
 export interface User {
   id: number;
   cpf: string;
   name: string;
-  email: string;
   phone: string;
   address: string;
-  userRole: Role;
   profession: string;
+  email: string;
+  userRole: Role;
+}
+
+export interface UserDTO {
+  id: number;
+  cpf: string;
+  name: string;
+  phone: string;
+  address: string;
+  profession: string;
+  email: string;
+  userRole: Role;
+  password: string;
 }
 
 export interface UserCreateDTO {
   cpf: string;
   name: string;
-  email: string;
   phone: string;
   address: string;
-  userRole: Role;
   profession: string;
+  email: string;
+  userRole: Role;
   password: string;
 }
 

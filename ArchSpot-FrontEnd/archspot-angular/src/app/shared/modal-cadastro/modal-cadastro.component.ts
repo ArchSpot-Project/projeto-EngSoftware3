@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../core/services/user.service';
-import { UserCreateDTO } from '../../core/models/user.model';
+import { Role, UserCreateDTO, UserDTO } from '../../core/models/user.model';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-modal-cadastro',
@@ -10,26 +11,43 @@ import { UserCreateDTO } from '../../core/models/user.model';
   styleUrl: './modal-cadastro.component.css',
 })
 
-export class ModalCadastroComponent {
+export class ModalCadastroComponent implements OnInit {
   
-  name = '';
-  email = '';
+  constructor(
+    public activeModal: NgbActiveModal,
+    private userService: UserService,
+    private authService: AuthService
+  ) { }
+  
+  @Input() isEditMode: boolean = false;
+  @Input() userData: Partial<UserDTO> = {};
+
+  ngOnInit() {
+    if (this.isEditMode && this.userData) {
+      this.cpf = this.userData.cpf || '';
+      this.name = this.userData.name || '';
+      this.phone = this.userData.phone || '';
+      this.address = this.userData.address || '';
+      this.profession = this.userData.profession || '';
+      this.email = this.userData.email || '';
+      this.userRole = this.userData.userRole || 'CUSTOMER';
+      this.password = this.userData.password || '';
+    }
+  }
+
   cpf = '';
+  name = '';
   phone = '';
   address = '';
   profession = '';
-  userRole: 'customer' | 'member' = 'customer';
+  email = '';
+  userRole: Role = 'CUSTOMER';
   password = '';
   confirmPassword = '';
   passwordsDoNotMatch = false;
 
   preview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
-
-  constructor(
-    public activeModal: NgbActiveModal,
-    private userService: UserService
-  ) {}
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -63,16 +81,31 @@ export class ModalCadastroComponent {
       password: this.password
     };
 
-    this.userService.createUser(newUser).subscribe({
-      next: (res) => {
-        alert('Usuário cadastrado com sucesso!');
-        this.activeModal.close();
-      },
-      error: (err) => {
-        alert('Erro ao cadastrar usuário.');
-        console.error(err);
-      }
-    });
+    if (this.isEditMode && this.userData?.id) {
+      this.userService.updateUser(this.userData.id, newUser).subscribe({
+        next: (updatedUser) => {
+          this.authService.setCurrentUser(updatedUser);
+          alert('Perfil atualizado com sucesso!');
+          this.activeModal.close();
+          location.reload();
+        },
+        error: (err) => {
+          alert('Erro ao atualizar perfil.');
+          console.error(err);
+        }
+      });
+    } else {
+      this.userService.createUser(newUser).subscribe({
+        next: () => {
+          alert('Usuário cadastrado com sucesso!');
+          this.activeModal.close();
+        },
+        error: (err) => {
+          alert('Erro ao cadastrar usuário.');
+          console.error(err);
+        }
+      });
+    }
   }
 }
 

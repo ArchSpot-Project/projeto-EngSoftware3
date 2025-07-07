@@ -38,9 +38,13 @@ public class UserService {
 	// Para criar novo usuario
 	public User create(UserCreateDTO dto) {
 		User obj = new User();
-		obj.setName(dto.name());
 		obj.setCpf(dto.cpf());
+		obj.setName(dto.name());
+		obj.setPhone(dto.phone());
+		obj.setAddress(dto.address());
+		obj.setProfession(dto.profession());
 		obj.setEmail(dto.email());
+		obj.setUserRole(dto.userRole());
 		obj.setPassword(dto.password());
 		return repository.save(obj);
 	}
@@ -78,14 +82,15 @@ public class UserService {
 
 	}
 
-		/*
-	 		Autentica o usuário pelas credenciais.
-	 		@return Optional.empty() se inválido, ou UserDTO se válido.
-	 	*/
-    public Optional<UserDTO> authenticate(LoginRequestDTO creds) {
-        return repository
-            .findByEmailAndPassword(creds.email(), creds.password())
-            .map(u -> new UserDTO(u.getId(), u.getName(), u.getEmail(), u.getUserRole()));
-    }
+	/*
+	 * Autentica o usuário pelas credenciais.
+	 * 
+	 * @return Optional.empty() se inválido, ou UserDTO se válido.
+	 */
+	public Optional<UserDTO> authenticate(LoginRequestDTO creds) {
+		return repository
+				.findByEmailAndPassword(creds.email(), creds.password())
+				.map(u -> new UserDTO(u.getId(), u.getName(), u.getEmail(), u.getUserRole()));
+	}
 
 }

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProjectsModule } from './projects/projects.module';
 import { EventsModule } from './events/events.module';
 import { ReportsModule } from './reports/reports.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReportsModule } from './reports/reports.module';
     ProjectsModule,
     EventsModule,
     ReportsModule,
+    ProfileModule,
     MaintenanceModule,
 
     PublicModule,
